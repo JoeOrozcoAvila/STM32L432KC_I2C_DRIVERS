@@ -1,0 +1,47 @@
+0001 0000
+0000 0001
+
+1111 1111
+
+PROGRAM STATUS REGISTER (PSR): Is a combination of three special registers: Application program Status Register (APSR), Interrupt Program Status Register (IPSR)
+and the Execution Program Status Register (EPSR)
+
+Five status flags:
+
+N: Negative Flag: Is set if the result of the ALU is negative, otherwise is cleared
+Z: Zero Flag: Is set if the result of the ALU is zero, otherwise is cleared
+V: Overflow Flag: Is set if an overflow takes place when performing a signed addition or substraction, otherwise is cleared
+C: Carry Flag: Is set if carry occurs in unsigned addition and cleared otherwise.
+			   For unsigned substraction, it is set if no borrow has occurred and is cleared otherwise
+Q: Saturation Flag: Is set if an SSAT or USAT instruction causes saturation
+   (Saturation instructions limit a given input to a configurable signed or unsigned range. When the input value exceeds the specified range, its output is then set as the maximum
+   or minimum value of the selected range. Otherwise the output is equal to the input.)
+   SSAT r2, #11, r1		; output range: -2^10 <= r2 <= 2^10
+   USAT r2, #11, r1		;output range: 0 <= r2 <= 2^11
+   
+   
+   int main(int argc, char **argv)
+{
+    int i;
+    
+    //1.- iterate over array of args
+    for (int i = 0; i < argc; i++)
+    {
+        printf("argv %d is %s\n", i, argv[i]); //prints argv at index i
+    }
+    
+    printf("\n\n");
+    
+    //2.- dereference each string arg(*argv) via to the pointer
+    // to the start of each array of args (**argv)
+    for (int i=0; i< argc; i++)
+    {
+        printf("arg %d is %s\n", i, *argv);
+        argv += 1;
+        
+    }
+    
+    
+    return 0;
+}
+
